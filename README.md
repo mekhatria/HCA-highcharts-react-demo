@@ -1,16 +1,105 @@
-# React + Vite
+# Getting Started with Highcharts React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple guide to create your first Highcharts chart in a React application using Vite.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node.js (version 18 or newer)
+- npm (comes with Node.js)
+- VS Code (or any code editor)
 
-## React Compiler
+## Installation Steps
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. Create Project Folder
+```bash
+mkdir react101
+cd react101
+```
 
-## Expanding the ESLint configuration
+### 2. Create React App with Vite
+```bash
+npm create vite@latest my-chart-app -- --template react
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+When prompted about "rolldown-vite (Experimental)", select **No** (press Enter).
+
+### 3. Navigate into Project
+```bash
+cd my-chart-app
+```
+
+### 4. Install Base Dependencies
+```bash
+npm install
+```
+
+### 5. Install Highcharts Packages
+```bash
+npm install highcharts @highcharts/react
+```
+
+## Create Your First Chart
+
+### 6. Edit App.jsx
+
+Open `src/App.jsx` and replace all content with:
+```jsx
+import React from 'react';
+import { Chart, Title, Series } from '@highcharts/react';
+
+const App = () => (
+  <div>
+    <Chart>
+      <Title>My First Chart</Title>
+      <Series type="line" data={[1, 2, 3]} />
+    </Chart>
+  </div>
+);
+
+export default App;
+```
+
+### 7. Start Development Server
+```bash
+npm run dev
+```
+
+Open your browser and navigate to `http://localhost:5173` to see your chart!
+
+## Add Multiple Series (Optional)
+
+Update `src/App.jsx` to add a second series:
+```jsx
+import React from 'react';
+import { Chart, Title, Series } from '@highcharts/react';
+
+const App = () => (
+  <div>
+    <Chart>
+      <Title>My Configured Chart</Title>
+      <Series type="line" data={[1, 2, 3]} />
+      <Series type="area" data={[3, 2, 1]} />
+    </Chart>
+  </div>
+);
+
+export default App;
+```
+
+Save the file and Vite will automatically refresh your browser!
+
+## What You'll See
+
+- An interactive line chart with the title "My First Chart"
+- Hover tooltips showing data values
+- With the second series added: both a line and area chart displayed together
+
+## Learn More
+
+- [Highcharts Documentation](https://www.highcharts.com/docs/react/getting-started)
+- [Vite Documentation](https://vite.dev/)
+- [React Documentation](https://react.dev/)
+
+## License
+
+This project is for educational purposes as part of Highcharts Academy.
